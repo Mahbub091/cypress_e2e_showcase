@@ -22,7 +22,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "cy-verify-downloads": "^0.1.8",
-    "cypress": "^9.7.0",
+    "cypress": "^10.3.1",
     "cypress-downloadfile": "^1.2.2",
     "cypress-xpath": "^2.0.0",
     "eslint": "^8.20.0",
@@ -33,5 +33,6 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "prettier": "^2.7.1"
-  }
+  },
+  "dependencies": {}
 }
