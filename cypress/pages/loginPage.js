@@ -36,6 +36,10 @@ class LoginPage {
   signUpButton() {
     return cy.get("button[data-qa='signup-button']");
   }
+
+  testButton() {
+    return cy.get('');
+  }
 }
 
 export default new LoginPage();
