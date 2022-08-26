@@ -1,16 +1,90 @@
+/// <reference types="cypress" />
 require('cypress-downloadfile/lib/downloadFileCommand');
 require('cy-verify-downloads').addCustomCommand();
 
+import homePage from '../pages/homePage';
 
-Cypress.Commands.add("validUrl", (partialUrl, fullUrl) => {
-    cy.url()
-      .then((value) => {
-        cy.log("Current Url Is: ", value);
-      })
-      .should("include", partialUrl)
-      .should("eq", fullUrl);
-  
-    cy.request(fullUrl).should((response) => {
-      expect(response.status).to.eq(200);
-    });
+const productCategory = ['Dress', 'Jeans', 'Tops & Shirts'];
+const womenProductCategory = ['Dress ', 'Tops ', 'Saree '];
+const menProductCategory = ['Tshirts ', 'Jeans '];
+const kidsProductCategory = ['Dress ', 'Tops & Shirts '];
+
+Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
+  cy.url()
+    .then((value) => {
+      cy.log('Current Url Is: ', value);
+    })
+    .should('include', partialUrl)
+    .should('eq', fullUrl);
+
+  cy.request(fullUrl).should((response) => {
+    expect(response.status).to.eq(200);
   });
+});
+
+Cypress.Commands.add('productCategory', (value) => {
+  homePage.categoryItems().each((item, index, list) => {
+    expect(list).to.have.length.above(value);
+
+    expect(Cypress.$(item).text()).to.contain(productCategory[index]);
+  });
+});
+
+Cypress.Commands.add('productCategoryClick', (position, containText) => {
+  homePage.categoryProducts().then(($ele) => {
+    const text = $ele.text();
+
+    cy.wrap($ele).eq(position).should('contain.text', containText).click();
+  });
+});
+
+Cypress.Commands.add(
+  'validatingWomenProductSubcategoryHref',
+  (length, hrefAttr) => {
+    homePage.womenCategorySubProduct().each((item, index, list) => {
+      expect(list).to.exist;
+
+      expect(Cypress.$(item).text()).to.eq(womenProductCategory[index]);
+    });
+
+    homePage
+      .womenCategorySubProduct()
+      .eq(length)
+      .should('have.attr', 'href')
+      .should('match', hrefAttr);
+  },
+);
+
+Cypress.Commands.add(
+  'validatingMenProductSubcategoryHref',
+  (length, hrefAttr) => {
+    homePage.menCategorySubProduct().each((item, index, list) => {
+      expect(list).to.exist;
+
+      expect(Cypress.$(item).text()).to.eq(menProductCategory[index]);
+    });
+
+    homePage
+      .menCategorySubProduct()
+      .eq(length)
+      .should('have.attr', 'href')
+      .should('match', hrefAttr);
+  },
+);
+
+Cypress.Commands.add(
+  'validatingKidsProductSubcategoryHref',
+  (length, hrefAttr) => {
+    homePage.kidsCategorySubProduct().each((item, index, list) => {
+      expect(list).to.exist;
+
+      expect(Cypress.$(item).text()).to.eq(kidsProductCategory[index]);
+    });
+
+    homePage
+      .kidsCategorySubProduct()
+      .eq(length)
+      .should('have.attr', 'href')
+      .should('match', hrefAttr);
+  },
+);

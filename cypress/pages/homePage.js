@@ -12,6 +12,26 @@ class HomePage {
   allHeaderItems() {
     return cy.get("header[id='header'] li");
   }
+
+  categoryItems() {
+    return cy.get("[class='panel panel-default']");
+  }
+
+  categoryProducts() {
+    return cy.get(' .panel-heading > .panel-title > a');
+  }
+
+  womenCategorySubProduct() {
+    return cy.get('#Women > div:nth-child(1) > ul:nth-child(1) > li > a');
+  }
+
+  menCategorySubProduct() {
+    return cy.get('#Men > div:nth-child(1) > ul:nth-child(1) > li > a');
+  }
+
+  kidsCategorySubProduct() {
+    return cy.get('#Kids > div:nth-child(1) > ul:nth-child(1) > li > a');
+  }
 }
 
 export default new HomePage();
