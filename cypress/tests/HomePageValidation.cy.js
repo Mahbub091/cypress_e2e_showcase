@@ -8,7 +8,7 @@ describe('HomePage Testing', () => {
     cy.validUrl('exercise', Cypress.env('homePage'));
   });
 
-  it('Validate Header Menus ', () => {
+  it.skip('Validate Header Menus ', () => {
     const menuClass = [
       'fa fa-home',
       'material-icons card_travel',
@@ -50,7 +50,7 @@ describe('HomePage Testing', () => {
     });
   });
 
-  it('Validating Category Section', () => {
+  it.skip('Validating Category Section', () => {
     homePage
       .categoryItems()
       .should('have.length.at.least', 1)
@@ -76,5 +76,42 @@ describe('HomePage Testing', () => {
     cy.productCategoryClick(2, 'Kids');
     cy.validatingKidsProductSubcategoryHref(0, /\/category_products\/4/i);
     cy.validatingKidsProductSubcategoryHref(1, /\/category_products\/5/i);
+  });
+
+  it.skip('Validating Brands Section', () => {
+    cy.contains('Brands').should('be.visible').should('have.text', 'Brands');
+
+    cy.brandsCategory(5);
+
+    cy.validatingBrandsSubcategoryHref(0, /\/brand_products\/Polo/i);
+    cy.validatingBrandsSubcategoryHref(1, /\/brand_products\/H&M/i);
+    cy.validatingBrandsSubcategoryHref(2, /\/brand_products\/Madame/i);
+    cy.validatingBrandsSubcategoryHref(3, /\/brand_products\/Mast & Harbour/i);
+    cy.validatingBrandsSubcategoryHref(4, /\/brand_products\/Babyhug/i);
+    cy.validatingBrandsSubcategoryHref(
+      5,
+      /\/brand_products\/Allen Solly Junior/i,
+    );
+    cy.validatingBrandsSubcategoryHref(6, /\/brand_products\/Kookie Kids/i);
+    cy.validatingBrandsSubcategoryHref(7, /\/brand_products\/Biba/i);
+  });
+
+  it.skip('Validating images', () => {
+    cy.get('img')
+      .should('be.visible')
+      .each(($img) => {
+        const message = $img.parent().parent().text();
+        expect($img, message).to.not.have.attr('src', '#undefined');
+      });
+  });
+
+  it('Cross validating Image', () => {
+    homePage
+      .shirtPic()
+      .should('be.visible')
+      .should((img) => {
+        expect(img.width).to.be.greaterThan(0);
+        expect(img.height).to.be.greaterThan(0);
+      });
   });
 });

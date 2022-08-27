@@ -8,6 +8,16 @@ const productCategory = ['Dress', 'Jeans', 'Tops & Shirts'];
 const womenProductCategory = ['Dress ', 'Tops ', 'Saree '];
 const menProductCategory = ['Tshirts ', 'Jeans '];
 const kidsProductCategory = ['Dress ', 'Tops & Shirts '];
+const brandsCategory = [
+  'Polo',
+  'H&M',
+  'Madame',
+  'Mast & Harbour',
+  'Babyhug',
+  'Allen Solly Junior',
+  'Kookie Kids',
+  'Biba',
+];
 
 Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
   cy.url()
@@ -88,3 +98,48 @@ Cypress.Commands.add(
       .should('match', hrefAttr);
   },
 );
+
+Cypress.Commands.add('brandsCategory', (value) => {
+  homePage.brandsCategory().each((item, index, list) => {
+    expect(list).to.exist;
+
+    expect(list).to.have.length.above(value);
+
+    expect(Cypress.$(item).text()).to.contain(brandsCategory[index]);
+  });
+});
+
+Cypress.Commands.add('validatingBrandsSubcategoryHref', (length, hrefAttr) => {
+  homePage.brandsCategory().each((item, index, list) => {
+    expect(list).to.exist;
+
+    expect(Cypress.$(item).text()).to.contain(brandsCategory[index]);
+  });
+
+  homePage
+    .brandsCategory()
+    .eq(length)
+    .should('have.attr', 'href')
+    .should('match', hrefAttr);
+});
+
+Cypress.Commands.add('isFixtureImage', (subject, fixtureImage) => {
+  homePage
+    .shirtPic()
+    .should(([img]) => {
+      expect(img.complete).to.be.true;
+    })
+    .then(([img]) => {
+      cy.fixture('shirt.jpg').then((content) => {
+        let fixtureImage = new Image();
+        fixtureImage.src = `data:image/jpeg;base64,${content}`;
+        return new Promise((resolve) => {
+          fixtureImage.onload = () => {
+            expect(img.naturalWidth).to.equal(fixtureImage.naturalWidth);
+            expect(img.naturalHeight).to.equal(fixtureImage.naturalHeight);
+            resolve();
+          };
+        });
+      });
+    });
+});
