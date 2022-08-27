@@ -32,6 +32,16 @@ class HomePage {
   kidsCategorySubProduct() {
     return cy.get('#Kids > div:nth-child(1) > ul:nth-child(1) > li > a');
   }
+
+  brandsCategory() {
+    return cy.get('.nav-stacked > li > a');
+  }
+
+  shirtPic() {
+    return cy.get(
+      ':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > img',
+    );
+  }
 }
 
 export default new HomePage();
