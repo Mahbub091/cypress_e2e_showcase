@@ -1,45 +1,37 @@
 {
-  "name": "cypress_e2e",
+  "name": "cypress_e2e_framework",
   "version": "1.0.0",
   "description": "Cypress End-To-End Testing (JS)",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "cypress run --browser chrome --headless",
+    "cy": "cypress open",
+    "report-merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/finalReport.json",
+    "report-generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
+    "mochaReport": "npm run report-merge && npm run mochawesome_generate_report"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mahbub091/cypress_e2e.git"
+    "url": "git+https://github.com/DevsDenBD/cypress_e2e_framework.git"
   },
   "keywords": [
     "cypress"
   ],
-  "author": "",
+  "author": "DevsDenBD",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mahbub091/cypress_e2e/issues"
+    "url": "https://github.com/DevsDenBD/cypress_e2e_framework/issues"
   },
-  "homepage": "https://github.com/Mahbub091/cypress_e2e#readme",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "cy-verify-downloads": "^0.1.8",
-    "cypress": "^10.3.1",
-    "cypress-downloadfile": "^1.2.2",
-    "cypress-xpath": "^2.0.0",
-    "eslint": "^8.20.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.30.1",
-    "prettier": "^2.7.1",
+    "cypress": "^11.1.0",
     "cypress-mochawesome-reporter": "^3.2.2",
     "cypress-multi-reporters": "^1.5.0",
     "mochawesome": "^7.0.1",
     "mochawesome-merge": "^4.2.1",
-    "mochawesome-report-generator": "^6.0.1"
+    "mochawesome-report-generator": "^6.0.1",
+    "prettier": "2.7.1"
   },
   "dependencies": {
-    "cypress-real-events": "^1.7.1"
+    "cypress-real-events": "^1.7.4"
   }
 }
