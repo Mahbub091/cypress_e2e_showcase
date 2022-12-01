@@ -2,11 +2,11 @@
 
 class LoginPage {
   loginForm() {
-    return cy.get('.login-form');
+    return cy.get(".login-form");
   }
 
   signUpForm() {
-    return cy.get('.signup-form');
+    return cy.get(".signup-form");
   }
 
   contains(text) {
@@ -37,6 +37,13 @@ class LoginPage {
     return cy.get("button[data-qa='signup-button']");
   }
 
+  loginUser() {
+    return cy.get(":nth-child(10) > a");
+  }
+
+  incorrectUserError() {
+    return cy.get("[action] p");
+  }
 }
 
 export default new LoginPage();
