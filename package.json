@@ -32,7 +32,12 @@
     "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "cypress-mochawesome-reporter": "^3.2.2",
+    "cypress-multi-reporters": "^1.5.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.0.1"
   },
   "dependencies": {
     "cypress-real-events": "^1.7.1"

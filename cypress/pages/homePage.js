@@ -18,29 +18,33 @@ class HomePage {
   }
 
   categoryProducts() {
-    return cy.get(' .panel-heading > .panel-title > a');
+    return cy.get(" .panel-heading > .panel-title > a");
   }
 
   womenCategorySubProduct() {
-    return cy.get('#Women > div:nth-child(1) > ul:nth-child(1) > li > a');
+    return cy.get("#Women > div:nth-child(1) > ul:nth-child(1) > li > a");
   }
 
   menCategorySubProduct() {
-    return cy.get('#Men > div:nth-child(1) > ul:nth-child(1) > li > a');
+    return cy.get("#Men > div:nth-child(1) > ul:nth-child(1) > li > a");
   }
 
   kidsCategorySubProduct() {
-    return cy.get('#Kids > div:nth-child(1) > ul:nth-child(1) > li > a');
+    return cy.get("#Kids > div:nth-child(1) > ul:nth-child(1) > li > a");
   }
 
   brandsCategory() {
-    return cy.get('.nav-stacked > li > a');
+    return cy.get(".nav-stacked > li > a");
   }
 
   shirtPic() {
     return cy.get(
-      ':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > img',
+      ":nth-child(4) > .product-image-wrapper > .single-products > .productinfo > img",
     );
+  }
+
+  homeMenu() {
+    return cy.get("header[id='header'] li:nth-child(1) a:nth-child(1)");
   }
 }
 
