@@ -1,0 +1,10 @@
+name: Cypress Test Suite
+on: [push]
+jobs:
+    cypress-run:
+      runs-on: ubuntu-latest
+      steps: 
+          - name: Checkout
+            uses: actions/checkout@v2.5.0
+          - name: Cypress.io
+            uses: cypress-io/github-action@v5.0.0
