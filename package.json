@@ -1,5 +1,5 @@
 {
-  "name": "cypress_e2e_framework",
+  "name": "cypress_e2e_showcase",
   "version": "1.0.0",
   "description": "Cypress End-To-End Testing (JS)",
   "main": "index.js",
@@ -8,21 +8,24 @@
     "cy": "cypress open",
     "report-merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/finalReport.json",
     "report-generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
-    "mochaReport": "npm run report-merge && npm run mochawesome_generate_report"
+    "mochaReport": "npm run report-merge && npm run mochawesome_generate_report",
+    "allure:run": "cypress run --browser chrome --spec cypress/e2e/**/*.cy.{js,jsx,ts,tsx} --env allure=true",
+    "allure:report": "allure generate allure-results --clean -o allure-report && allure open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DevsDenBD/cypress_e2e_framework.git"
+    "url": "git+https://github.com/Mahbub091/cypress_e2e_showcase.git"
   },
   "keywords": [
     "cypress"
   ],
-  "author": "DevsDenBD",
+  "author": "Mahbub091",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DevsDenBD/cypress_e2e_framework/issues"
+    "url": "https://github.com/Mahbub091/cypress_e2e_showcase/issues"
   },
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.34.0",
     "cypress": "^11.1.0",
     "cypress-mochawesome-reporter": "^3.2.2",
     "cypress-multi-reporters": "^1.5.0",

@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   chromeWebSecurity: false,
@@ -11,17 +11,17 @@ module.exports = defineConfig({
   failOnStatusCode: false,
   viewportHeight: 1200,
   viewportWidth: 1920,
-  reporter: "cypress-mochawesome-reporter",
+  reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
-    reportDir: "cypress/reports/html",
+    reportDir: 'cypress/reports/html',
     charts: true,
-    reportPageTitle: "My Test Suite",
+    reportPageTitle: 'End-To-End Test Suite',
     embeddedScreenshots: true,
     inlineAssets: true,
   },
   e2e: {
     setupNodeEvents(on, config) {
-      return require("./cypress/plugins/index.js")(on, config);
+      return require('./cypress/plugins/index.js')(on, config);
     },
   },
 });
