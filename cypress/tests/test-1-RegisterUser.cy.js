@@ -91,7 +91,7 @@ describe('Register User on page', () => {
   });
 
   it('Entering Infos on SignUp form', () => {
-    signUpPage.passwordInputField().clear().realType(Cypress.env('password'));
+    signUpPage.passwordInputField().clear().realType(credUtils.password);
 
     signUpPage
       .dayField()
