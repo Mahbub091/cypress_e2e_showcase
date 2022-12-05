@@ -35,5 +35,7 @@
     "mochawesome-report-generator": "^6.0.1",
     "prettier": "2.7.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "cypress-real-events": "^1.7.4"
+  }
 }
