@@ -1,6 +1,9 @@
-name: Cypress E-2-E
+name: Cypress Test Suite
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   cypress-run:
@@ -8,12 +11,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+
       - name: Cypress run
-        uses: cypress-io/github-action@v4 # use the explicit version number
+        uses: cypress-io/github-action@v4
         with:
           command: npm run cy:headless
+
       - name: Uploading artifact
         uses: actions/upload-artifact@v2
         if: always()
@@ -21,6 +24,7 @@ jobs:
           name: cypress-execution-report
           path: cypress/reports/html
           retention-days: 30
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
