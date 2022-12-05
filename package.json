@@ -14,7 +14,7 @@
     "cloud:cy": "npx cypress run --record --key 0f372739-9450-493e-94af-372f02f5248f",
     "cy:run": "cypress run",
 
-    "test": "node_modules\\.bin\\cypress run --config pageLoadTimeout=100000",
+    "test:chrome": "node_modules\\.bin\\cypress run --config pageLoadTimeout=100000",
     "runtest": "npm run test --",
     "merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/output.json",
     "generate_mochawesome_report": "marge cypress/reports/output.json --reportDir ./ --inline"
