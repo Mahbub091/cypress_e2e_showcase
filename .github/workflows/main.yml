@@ -4,9 +4,9 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.5.0
       - name: Setup Node
         uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
       - name: Cypress.io
         uses: cypress-io/github-action@v5.0.0
