@@ -10,24 +10,21 @@ on:
 jobs:
   cypress-test:
     name: Run on Chrome Latest
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     container: cypress/browsers:node18.12.0-chrome107
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.5.0
 
       - name: Install cypress and verify
         run: |
           npm ci
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run cy:headless
+        run: npm run open:cy
         continue-on-error: true
 
-      - name: Merge test reports
-        run: npm run report:merge
-
       - name: Generate HTML report
-        run: npm run report:generate
+        run: npm run mochaReport
 
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
