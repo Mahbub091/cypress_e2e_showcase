@@ -6,7 +6,7 @@ on:
 
 jobs:
   cypress-test:
-    name: Run on Chrome 83
+    name: Run on Chrome 107
     runs-on: ubuntu-20.04
     container: cypress/browsers:node16.16.0-chrome107-ff107
 
@@ -29,8 +29,8 @@ jobs:
       - name: Copy test execution videos and screenshots
         run: |
           mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
+          cp -r cypress/videos
+          cp -r cypress/screenshots
       - name: Merge test reports
         run: npm run combine:report
 
