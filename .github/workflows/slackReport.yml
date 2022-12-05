@@ -1,0 +1,31 @@
+name: Cypress E-2-E
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v4 # use the explicit version number
+        with:
+          command: npm run cy:headless
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: mahbub
+          SLACK_TITLE: End-2-End Tests
+          SLACK_MESSAGE: "Let's be Awesome :rocket:"
+          SLACK_COLOR: ${{ job.status }}
