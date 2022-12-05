@@ -4,8 +4,8 @@
   "description": "Cypress End-To-End Testing (JS)",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run --browser chrome --headless",
-    "cy": "cypress open",
+    "run:headless": "cypress run --browser chrome --headless",
+    "open:cy": "cypress open",
     "report-merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/finalReport.json",
     "report-generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
     "mochaReport": "npm run report-merge && npm run mochawesome_generate_report",
