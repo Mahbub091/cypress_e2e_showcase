@@ -2,11 +2,16 @@
 
 import homePage from '../pages/homePage';
 import loginPage from '../pages/loginPage';
+import credUtils from '../support/credentialUtils';
 
 describe('Login Validation For Users', () => {
   it('Navigating to HomePage', () => {
     cy.visit('/');
-    cy.validUrl('exercise', Cypress.env('homePage'));
+  });
+
+  it('Homepage navigation verification', () => {
+    cy.validUrl('exercise', credUtils.homePage);
+    baseFunc.ValidatePageTitle('Automation Exercise');
   });
 
   it('Navigating to Sign Up/Login Page', () => {

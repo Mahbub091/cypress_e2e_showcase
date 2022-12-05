@@ -5,6 +5,7 @@ import baseFunc from '../pages/functions';
 import loginPage from '../pages/loginPage';
 import signUpPage from '../pages/signUpPage';
 import utils from '../support/utils';
+import credUtils from '../support/credentialUtils';
 
 describe('Register User on page', () => {
   it('Navigating to the website', () => {
@@ -12,7 +13,7 @@ describe('Register User on page', () => {
   });
 
   it('Homepage navigation verification', () => {
-    cy.validUrl('exercise', Cypress.env('homePage'));
+    cy.validUrl('exercise', credUtils.homePage);
     baseFunc.ValidatePageTitle('Automation Exercise');
   });
 
