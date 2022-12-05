@@ -20,7 +20,7 @@ jobs:
           npm ci
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run open:cy
+        run: npm run cy:run
         continue-on-error: true
 
       - name: Generate HTML report
