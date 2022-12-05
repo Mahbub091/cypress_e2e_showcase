@@ -23,10 +23,6 @@ jobs:
         run: npm run cy:headless
         continue-on-error: true
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          cp -r cypress/videos
-          cp -r cypress/screenshots
       - name: Merge test reports
         run: npm run report:merge
 
