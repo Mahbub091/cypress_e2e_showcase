@@ -1,5 +1,13 @@
-name: Cypress Test Suite
-on: [push]
+name: Cypress Test
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: ['master']
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
