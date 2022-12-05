@@ -1,13 +1,18 @@
 /// <reference types="cypress" />
 
 import homePage from '../pages/homePage';
-
 import utils from '../support/utils';
+import baseFunc from '../pages/functions';
+import credUtils from '../support/credentialUtils';
 
 describe('HomePage Testing', () => {
   it('Navigate and Validate Home Page', () => {
     cy.visit('/');
-    cy.validUrl('exercise', Cypress.env('homePage'));
+  });
+
+  it('Homepage navigation verification', () => {
+    cy.validUrl('exercise', credUtils.homePage);
+    baseFunc.ValidatePageTitle('Automation Exercise');
   });
 
   it('Validate Header Menus ', () => {
