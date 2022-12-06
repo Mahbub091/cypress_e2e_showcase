@@ -139,6 +139,8 @@ dist
 .svelte-kit
 
 cypress/downloads
+cypress/videos
+cypress/screenshots
 allure-report
 allure-results
-
+cypress/reports
