@@ -11,7 +11,7 @@
     "mochaReport": "npm run report-merge && npm run mochawesome_generate_report",
     "allure:run": "cypress run --browser chrome --spec cypress/tests/**/*.cy.{js,jsx,ts,tsx} --env allure=true",
     "allure:report": "allure generate allure-results --clean -o allure-report && allure open",
-    "cloud:cy": "npx cypress run --record --key 0f372739-9450-493e-94af-372f02f5248f"
+    "cloud:cy": "npx cypress run --record --key {input cloud Key}"
   },
   "repository": {
     "type": "git",
