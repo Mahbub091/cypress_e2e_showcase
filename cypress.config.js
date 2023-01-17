@@ -22,6 +22,7 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: 'https://www.automationexercise.com/',
+    experimentalRunAllSpecs: true,
     specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
     setupNodeEvents(on, config) {
       return require('./cypress/plugins/index.js')(on, config);

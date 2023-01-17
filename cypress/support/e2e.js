@@ -18,6 +18,9 @@ import './commands';
 import 'cypress-real-events/support';
 import 'cypress-mochawesome-reporter/register';
 import '@shelex/cypress-allure-plugin';
+import 'cypress-if';
+import 'cypress-plugin-store/commands';
+require('@cypress/xpath');
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
