@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+//This test will create random user by using Faker data then will verify the random account.
 
 import homepage from '../pages/homePage';
 import baseFunc from '../pages/functions';
@@ -8,7 +9,7 @@ import utils from '../support/utils';
 import credUtils from '../support/credentialUtils';
 import { faker } from '@faker-js/faker';
 
-describe('Random User Verification for Cypress', () => {
+describe('Random User Verification', () => {
   it('Navigating To The Webpage', () => {
     cy.visit('/');
   });
@@ -158,7 +159,7 @@ describe('Random User Verification for Cypress', () => {
 
       cy.log(userNameText);
 
-      cy.wrap(userNameText).as('userName');
+      cy.wrap(userNameText).as('randomUserName');
     });
 
     signUpPage
@@ -173,12 +174,12 @@ describe('Random User Verification for Cypress', () => {
   });
 
   it('Verifying User Creation and Login', function () {
-    cy.log(this.userName);
+    cy.log(this.randomUserName);
     cy.get(
       '#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b',
     )
       .should('be.visible')
-      .contains(this.userName);
+      .contains(this.randomUserName);
 
     cy.contains('Delete Account').click();
     cy.contains('Continue').click();
