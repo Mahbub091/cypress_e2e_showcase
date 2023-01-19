@@ -154,3 +154,25 @@ Cypress.Commands.add('csrfCookies', () => {
     preserve: 'csrftoken',
   });
 });
+
+Cypress.Commands.add('randomUserStore', () => {
+  //storing random user for use
+  cy.get('#name').then(($name) => {
+    const userNameText = $name.val();
+
+    cy.log(userNameText);
+
+    cy.wrap(userNameText).as('randomUserName');
+  });
+});
+
+Cypress.Commands.add('verifyingUserLogin', () => {
+  //storing random user for use
+  cy.get('#name').then(($name) => {
+    const userNameText = $name.val();
+
+    cy.log(userNameText);
+
+    cy.wrap(userNameText).as('randomUserName');
+  });
+});

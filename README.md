@@ -6,7 +6,7 @@ This project has several reporting implemented:
 2. Mochawesome Reporter
 3. Allure Reporter
 
-For Headless Run Please execute "nom run run:headless" from your terminal.
+For Headless Run Please execute "npm run cy:headless" from your terminal.
 Run "open:cy" to open Cypress Runner GUI Mode.
 Run "npm run mochaReport" for Mochawesome Reporter.
 Run "allure:run" for Allure Report Generation.

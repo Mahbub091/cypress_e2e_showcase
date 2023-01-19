@@ -8,6 +8,7 @@ import signUpPage from '../pages/signUpPage';
 import utils from '../support/utils';
 import credUtils from '../support/credentialUtils';
 import { faker } from '@faker-js/faker';
+import test from '../support/testUtils';
 
 describe('Random User Verification', () => {
   it('Navigating To The Webpage', () => {
@@ -154,13 +155,7 @@ describe('Random User Verification', () => {
   });
 
   it('Click Create Account Button', function () {
-    cy.get('#name').then(($name) => {
-      const userNameText = $name.val();
-
-      cy.log(userNameText);
-
-      cy.wrap(userNameText).as('randomUserName');
-    });
+    cy.randomUserStore();
 
     signUpPage
       .createAccountButton()
@@ -168,24 +163,18 @@ describe('Random User Verification', () => {
       .should('have.html', 'Create Account')
       .click();
 
-    cy.contains('Account Created').should('exist');
+    signUpPage.accountCreationSuccessMessage();
 
-    cy.contains('Continue').click();
+    signUpPage.continueButtonClick();
   });
 
   it('Verifying User Creation and Login', function () {
-    cy.log(this.randomUserName);
-    cy.get(
-      '#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b',
-    )
-      .should('be.visible')
-      .contains(this.randomUserName);
+    test.runnerLog(this.randomUserName);
 
-    cy.contains('Delete Account').click();
-    cy.contains('Continue').click();
+    homepage.loginUser().contains(this.randomUserName);
+    test.eleByContains('Delete Account').should('be.visible').realClick();
+    test.eleByContains('Continue').should('be.visible').realClick();
 
-    cy.get(
-      '#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b',
-    ).should('not.exist');
+    homepage.loginUser().should('not.exist');
   });
 });
