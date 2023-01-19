@@ -6,6 +6,7 @@ import loginPage from '../pages/loginPage';
 import signUpPage from '../pages/signUpPage';
 import utils from '../support/utils';
 import credUtils from '../support/credentialUtils';
+import test from '../support/testUtils';
 
 describe('Register User on page', () => {
   it('Navigating to the website', () => {
@@ -149,18 +150,15 @@ describe('Register User on page', () => {
       .should('have.html', 'Create Account')
       .click();
 
-    cy.contains('Account Created').should('exist');
+    signUpPage.accountCreationSuccessMessage();
 
-    cy.contains('Continue').click();
+    signUpPage.continueButtonClick();
   });
 
   it('Username validation & delete', () => {
-    cy.get('.navbar-nav > li:nth-child(10) > a:nth-child(1)').should(
-      'contain.text',
-      'Logged in as',
-    );
+    loginPage.loginUserContainText();
 
-    cy.contains('Delete Account').click();
-    cy.contains('Continue').click();
+    test.eleByContains('Delete Account').should('be.visible').realClick();
+    test.eleByContains('Continue').should('be.visible').realClick();
   });
 });

@@ -4,7 +4,7 @@ class SignUpPage {
   /** Account Info Field */
 
   enterAccountInformation() {
-    return cy.get(".login-form .text-center:nth-child(1) b");
+    return cy.get('.login-form .text-center:nth-child(1) b');
   }
 
   titleRadioButton() {
@@ -36,11 +36,11 @@ class SignUpPage {
   }
 
   newsLetterCheckbox() {
-    return cy.get("input#newsletter");
+    return cy.get('input#newsletter');
   }
 
   specialOffersCheckbox() {
-    return cy.get("input#optin");
+    return cy.get('input#optin');
   }
 
   /** Address Information */
@@ -90,7 +90,15 @@ class SignUpPage {
   }
 
   loginText() {
-    return cy.get(".login-form h2");
+    return cy.get('.login-form h2');
+  }
+
+  accountCreationSuccessMessage() {
+    return cy.contains('Account Created').should('exist');
+  }
+
+  continueButtonClick() {
+    return cy.contains('Continue').should('be.visible').click();
   }
 }
 

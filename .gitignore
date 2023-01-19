@@ -144,3 +144,4 @@ cypress/screenshots
 allure-report
 allure-results
 cypress/reports
+cypress/reports/html/index.html

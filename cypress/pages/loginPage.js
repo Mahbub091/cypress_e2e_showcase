@@ -2,11 +2,11 @@
 
 class LoginPage {
   loginForm() {
-    return cy.get(".login-form");
+    return cy.get('.login-form');
   }
 
   signUpForm() {
-    return cy.get(".signup-form");
+    return cy.get('.signup-form');
   }
 
   contains(text) {
@@ -38,11 +38,17 @@ class LoginPage {
   }
 
   loginUser() {
-    return cy.get(":nth-child(10) > a");
+    return cy.get(':nth-child(10) > a');
   }
 
   incorrectUserError() {
-    return cy.get("[action] p");
+    return cy.get('[action] p');
+  }
+
+  loginUserContainText() {
+    return cy
+      .get('.navbar-nav > li:nth-child(10) > a:nth-child(1)')
+      .should('contain.text', 'Logged in as');
   }
 }
 
