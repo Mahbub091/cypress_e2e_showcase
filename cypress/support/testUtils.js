@@ -1,11 +1,11 @@
 const testUtils = {
-  runnerLog(Logger) {
-    return cy.log(Logger);
-  },
+	runnerLog(Logger) {
+		return cy.log(Logger)
+	},
 
-  eleByContains(elementText) {
-    return cy.contains(elementText);
-  },
-};
+	eleByContains(elementText) {
+		return cy.contains(elementText)
+	},
+}
 
-export default testUtils;
+export default testUtils
