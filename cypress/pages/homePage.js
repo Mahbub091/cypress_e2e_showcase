@@ -1,57 +1,57 @@
 /// <reference types="cypress" />
 
 class HomePage {
-  open(pageUrl) {
-    return cy.visit(pageUrl);
-  }
+	open(pageUrl) {
+		return cy.visit(pageUrl)
+	}
 
-  signInButton() {
-    return cy.get("a[href='/login']");
-  }
+	signInButton() {
+		return cy.get("a[href='/login']")
+	}
 
-  allHeaderItems() {
-    return cy.get("header[id='header'] li");
-  }
+	allHeaderItems() {
+		return cy.get("header[id='header'] li")
+	}
 
-  categoryItems() {
-    return cy.get("[class='panel panel-default']");
-  }
+	categoryItems() {
+		return cy.get("[class='panel panel-default']")
+	}
 
-  categoryProducts() {
-    return cy.get(' .panel-heading > .panel-title > a');
-  }
+	categoryProducts() {
+		return cy.get(" .panel-heading > .panel-title > a")
+	}
 
-  womenCategorySubProduct() {
-    return cy.get('#Women > div:nth-child(1) > ul:nth-child(1) > li > a');
-  }
+	womenCategorySubProduct() {
+		return cy.get("#Women > div:nth-child(1) > ul:nth-child(1) > li > a")
+	}
 
-  menCategorySubProduct() {
-    return cy.get('#Men > div:nth-child(1) > ul:nth-child(1) > li > a');
-  }
+	menCategorySubProduct() {
+		return cy.get("#Men > div:nth-child(1) > ul:nth-child(1) > li > a")
+	}
 
-  kidsCategorySubProduct() {
-    return cy.get('#Kids > div:nth-child(1) > ul:nth-child(1) > li > a');
-  }
+	kidsCategorySubProduct() {
+		return cy.get("#Kids > div:nth-child(1) > ul:nth-child(1) > li > a")
+	}
 
-  brandsCategory() {
-    return cy.get('.nav-stacked > li > a');
-  }
+	brandsCategory() {
+		return cy.get(".nav-stacked > li > a")
+	}
 
-  shirtPic() {
-    return cy.get(
-      ':nth-child(4) > .product-image-wrapper > .single-products > .productinfo > img',
-    );
-  }
+	shirtPic() {
+		return cy.get(
+			":nth-child(4) > .product-image-wrapper > .single-products > .productinfo > img"
+		)
+	}
 
-  homeMenu() {
-    return cy.get("header[id='header'] li:nth-child(1) a:nth-child(1)");
-  }
+	homeMenu() {
+		return cy.get("header[id='header'] li:nth-child(1) a:nth-child(1)")
+	}
 
-  loginUser() {
-    return cy.get(
-      '#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b',
-    );
-  }
+	loginUser() {
+		return cy.get(
+			"#header > div > div > div > div.col-sm-8 > div > ul > li:nth-child(10) > a > b"
+		)
+	}
 }
 
-export default new HomePage();
+export default new HomePage()

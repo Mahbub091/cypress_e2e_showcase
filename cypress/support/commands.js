@@ -1,178 +1,178 @@
 /// <reference types="cypress" />
-import homePage from '../pages/homePage';
-import Homepage from '../pages/homePage';
+import homePage from "../pages/homePage"
+import Homepage from "../pages/homePage"
 
-const productCategory = ['Dress', 'Jeans', 'Tops & Shirts'];
-const womenProductCategory = ['Dress ', 'Tops ', 'Saree '];
-const menProductCategory = ['Tshirts ', 'Jeans '];
-const kidsProductCategory = ['Dress ', 'Tops & Shirts '];
+const productCategory = ["Dress", "Jeans", "Tops & Shirts"]
+const womenProductCategory = ["Dress ", "Tops ", "Saree "]
+const menProductCategory = ["Tshirts ", "Jeans "]
+const kidsProductCategory = ["Dress ", "Tops & Shirts "]
 const brandsCategory = [
-  'Polo',
-  'H&M',
-  'Madame',
-  'Mast & Harbour',
-  'Babyhug',
-  'Allen Solly Junior',
-  'Kookie Kids',
-  'Biba',
-];
+	"Polo",
+	"H&M",
+	"Madame",
+	"Mast & Harbour",
+	"Babyhug",
+	"Allen Solly Junior",
+	"Kookie Kids",
+	"Biba",
+]
 
-Cypress.Commands.add('validUrl', (partialUrl, fullUrl) => {
-  cy.url().then((value) => {
-    cy.log('Current Url Is: ', value);
-    expect(value).to.contains(partialUrl);
-    expect(value).to.eq(fullUrl);
-  });
+Cypress.Commands.add("validUrl", (partialUrl, fullUrl) => {
+	cy.url().then(value => {
+		cy.log("Current Url Is: ", value)
+		expect(value).to.contains(partialUrl)
+		expect(value).to.eq(fullUrl)
+	})
 
-  cy.request(fullUrl).should((response) => {
-    expect(response.status).to.eq(200);
-  });
+	cy.request(fullUrl).should(response => {
+		expect(response.status).to.eq(200)
+	})
 
-  cy.request(fullUrl).should((response) => {
-    expect(response.status).to.not.eq(400);
-    cy.log('Request Time Out');
-  });
+	cy.request(fullUrl).should(response => {
+		expect(response.status).to.not.eq(400)
+		cy.log("Request Time Out")
+	})
 
-  cy.csrfCookies();
-});
+	cy.csrfCookies()
+})
 
-Cypress.Commands.add('productCategory', (value) => {
-  Homepage.categoryItems().each((item, index, list) => {
-    expect(list).to.have.length.above(value);
+Cypress.Commands.add("productCategory", value => {
+	Homepage.categoryItems().each((item, index, list) => {
+		expect(list).to.have.length.above(value)
 
-    expect(Cypress.$(item).text()).to.contain(productCategory[index]);
-  });
-});
+		expect(Cypress.$(item).text()).to.contain(productCategory[index])
+	})
+})
 
-Cypress.Commands.add('productCategoryClick', (position, containText) => {
-  homePage.categoryProducts().then(($ele) => {
-    const text = $ele.text();
+Cypress.Commands.add("productCategoryClick", (position, containText) => {
+	homePage.categoryProducts().then($ele => {
+		const text = $ele.text()
 
-    cy.wrap($ele).eq(position).should('contain.text', containText).click();
-  });
-});
-
-Cypress.Commands.add(
-  'validatingWomenProductSubcategoryHref',
-  (length, hrefAttr) => {
-    homePage.womenCategorySubProduct().each((item, index, list) => {
-      expect(list).to.exist;
-
-      expect(Cypress.$(item).text()).to.eq(womenProductCategory[index]);
-    });
-
-    homePage
-      .womenCategorySubProduct()
-      .eq(length)
-      .should('have.attr', 'href')
-      .should('match', hrefAttr);
-  },
-);
+		cy.wrap($ele).eq(position).should("contain.text", containText).click()
+	})
+})
 
 Cypress.Commands.add(
-  'validatingMenProductSubcategoryHref',
-  (length, hrefAttr) => {
-    homePage.menCategorySubProduct().each((item, index, list) => {
-      expect(list).to.exist;
+	"validatingWomenProductSubcategoryHref",
+	(length, hrefAttr) => {
+		homePage.womenCategorySubProduct().each((item, index, list) => {
+			expect(list).to.exist
 
-      expect(Cypress.$(item).text()).to.eq(menProductCategory[index]);
-    });
+			expect(Cypress.$(item).text()).to.eq(womenProductCategory[index])
+		})
 
-    homePage
-      .menCategorySubProduct()
-      .eq(length)
-      .should('have.attr', 'href')
-      .should('match', hrefAttr);
-  },
-);
+		homePage
+			.womenCategorySubProduct()
+			.eq(length)
+			.should("have.attr", "href")
+			.should("match", hrefAttr)
+	}
+)
 
 Cypress.Commands.add(
-  'validatingKidsProductSubcategoryHref',
-  (length, hrefAttr) => {
-    homePage.kidsCategorySubProduct().each((item, index, list) => {
-      expect(list).to.exist;
+	"validatingMenProductSubcategoryHref",
+	(length, hrefAttr) => {
+		homePage.menCategorySubProduct().each((item, index, list) => {
+			expect(list).to.exist
 
-      expect(Cypress.$(item).text()).to.eq(kidsProductCategory[index]);
-    });
+			expect(Cypress.$(item).text()).to.eq(menProductCategory[index])
+		})
 
-    homePage
-      .kidsCategorySubProduct()
-      .eq(length)
-      .should('have.attr', 'href')
-      .should('match', hrefAttr);
-  },
-);
+		homePage
+			.menCategorySubProduct()
+			.eq(length)
+			.should("have.attr", "href")
+			.should("match", hrefAttr)
+	}
+)
 
-Cypress.Commands.add('brandsCategory', (value) => {
-  homePage.brandsCategory().each((item, index, list) => {
-    expect(list).to.exist;
+Cypress.Commands.add(
+	"validatingKidsProductSubcategoryHref",
+	(length, hrefAttr) => {
+		homePage.kidsCategorySubProduct().each((item, index, list) => {
+			expect(list).to.exist
 
-    expect(list).to.have.length.above(value);
+			expect(Cypress.$(item).text()).to.eq(kidsProductCategory[index])
+		})
 
-    expect(Cypress.$(item).text()).to.contain(brandsCategory[index]);
-  });
-});
+		homePage
+			.kidsCategorySubProduct()
+			.eq(length)
+			.should("have.attr", "href")
+			.should("match", hrefAttr)
+	}
+)
 
-Cypress.Commands.add('validatingBrandsSubcategoryHref', (length, hrefAttr) => {
-  homePage.brandsCategory().each((item, index, list) => {
-    expect(list).to.exist;
+Cypress.Commands.add("brandsCategory", value => {
+	homePage.brandsCategory().each((item, index, list) => {
+		expect(list).to.exist
 
-    expect(Cypress.$(item).text()).to.contain(brandsCategory[index]);
-  });
+		expect(list).to.have.length.above(value)
 
-  homePage
-    .brandsCategory()
-    .eq(length)
-    .should('have.attr', 'href')
-    .should('match', hrefAttr);
-});
+		expect(Cypress.$(item).text()).to.contain(brandsCategory[index])
+	})
+})
 
-Cypress.Commands.add('isFixtureImage', (subject, fixtureImage) => {
-  homePage
-    .shirtPic()
-    .should(([img]) => {
-      expect(img.complete).to.be.true;
-    })
-    .then(([img]) => {
-      cy.fixture('shirt.jpg').then((content) => {
-        let fixtureImage = new Image();
-        fixtureImage.src = `data:image/jpeg;base64,${content}`;
-        return new Promise((resolve) => {
-          fixtureImage.onload = () => {
-            expect(img.naturalWidth).to.equal(fixtureImage.naturalWidth);
-            expect(img.naturalHeight).to.equal(fixtureImage.naturalHeight);
-            resolve();
-          };
-        });
-      });
-    });
-});
+Cypress.Commands.add("validatingBrandsSubcategoryHref", (length, hrefAttr) => {
+	homePage.brandsCategory().each((item, index, list) => {
+		expect(list).to.exist
 
-Cypress.Commands.add('csrfCookies', () => {
-  //adding a new command named login
-  Cypress.Cookies.defaults({
-    preserve: 'csrftoken',
-  });
-});
+		expect(Cypress.$(item).text()).to.contain(brandsCategory[index])
+	})
 
-Cypress.Commands.add('randomUserStore', () => {
-  //storing random user for use
-  cy.get('#name').then(($name) => {
-    const userNameText = $name.val();
+	homePage
+		.brandsCategory()
+		.eq(length)
+		.should("have.attr", "href")
+		.should("match", hrefAttr)
+})
 
-    cy.log(userNameText);
+Cypress.Commands.add("isFixtureImage", (subject, fixtureImage) => {
+	homePage
+		.shirtPic()
+		.should(([img]) => {
+			expect(img.complete).to.be.true
+		})
+		.then(([img]) => {
+			cy.fixture("shirt.jpg").then(content => {
+				let fixtureImage = new Image()
+				fixtureImage.src = `data:image/jpeg;base64,${content}`
+				return new Promise(resolve => {
+					fixtureImage.onload = () => {
+						expect(img.naturalWidth).to.equal(fixtureImage.naturalWidth)
+						expect(img.naturalHeight).to.equal(fixtureImage.naturalHeight)
+						resolve()
+					}
+				})
+			})
+		})
+})
 
-    cy.wrap(userNameText).as('randomUserName');
-  });
-});
+Cypress.Commands.add("csrfCookies", () => {
+	//adding a new command named login
+	Cypress.Cookies.defaults({
+		preserve: "csrftoken",
+	})
+})
 
-Cypress.Commands.add('verifyingUserLogin', () => {
-  //storing random user for use
-  cy.get('#name').then(($name) => {
-    const userNameText = $name.val();
+Cypress.Commands.add("randomUserStore", () => {
+	//storing random user for use
+	cy.get("#name").then($name => {
+		const userNameText = $name.val()
 
-    cy.log(userNameText);
+		cy.log(userNameText)
 
-    cy.wrap(userNameText).as('randomUserName');
-  });
-});
+		cy.wrap(userNameText).as("randomUserName")
+	})
+})
+
+Cypress.Commands.add("verifyingUserLogin", () => {
+	//storing random user for use
+	cy.get("#name").then($name => {
+		const userNameText = $name.val()
+
+		cy.log(userNameText)
+
+		cy.wrap(userNameText).as("randomUserName")
+	})
+})
