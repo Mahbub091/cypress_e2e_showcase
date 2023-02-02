@@ -10,7 +10,8 @@
 		"report:generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
 		"mochaReport": "npm run report-merge && npm run mochawesome_generate_report",
 		"allure:run": "cypress run --browser chrome --env allure=true",
-		"allure:report": "allure generate allure-results --clean -o allure-report && allure open",
+		"allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+		"allure:test": "npm run allure:run && npm run allure:report",
 		"cloud:cy": "npx cypress run --record --key {input cloud Key}"
 	},
 	"repository": {
