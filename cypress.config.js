@@ -12,6 +12,8 @@ module.exports = defineConfig({
 	failOnStatusCode: false,
 	viewportHeight: 1200,
 	viewportWidth: 1920,
+	screenshotOnRunFailure: true,
+	trashAssetsBeforeRuns: true,
 	reporter: "cypress-mochawesome-reporter",
 	reporterOptions: {
 		reportDir: "cypress/reports/html",
