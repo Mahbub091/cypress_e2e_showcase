@@ -1,6 +1,6 @@
 # cypress_e2e_framework
 
-![example workflow](https://github.com/mahbub091/cypress_e2e_showcase/actions/workflows/cypress_report.yml/badge.svg)
+[![Cypress Test](https://github.com/Mahbub091/cypress_e2e_showcase/actions/workflows/main.yml/badge.svg)](https://github.com/Mahbub091/cypress_e2e_showcase/actions/workflows/main.yml)
 
 <p align="center">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
