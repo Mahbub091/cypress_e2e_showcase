@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 
-import homepage from "../pages/homePage"
-import baseFunc from "../pages/functions"
-import loginPage from "../pages/loginPage"
-import signUpPage from "../pages/signUpPage"
-import utils from "../support/utils"
-import credUtils from "../support/credentialUtils"
+import homepage from "../../pages/homePage"
+import baseFunc from "../../pages/functions"
+import loginPage from "../../pages/loginPage"
+import signUpPage from "../../pages/signUpPage"
+import utils from "../../support/utils"
+import credUtils from "../../support/credentialUtils"
 
 describe("Incorrect Login Validation", () => {
 	it("Navigating to the website", () => {

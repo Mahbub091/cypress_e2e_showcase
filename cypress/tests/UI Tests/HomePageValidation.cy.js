@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import homePage from "../pages/homePage"
-import utils from "../support/utils"
-import baseFunc from "../pages/functions"
-import credUtils from "../support/credentialUtils"
+import homePage from "../../pages/homePage"
+import utils from "../../support/utils"
+import baseFunc from "../../pages/functions"
+import credUtils from "../../support/credentialUtils"
 
 describe("HomePage Testing", () => {
 	it("Navigate and Validate Home Page", () => {

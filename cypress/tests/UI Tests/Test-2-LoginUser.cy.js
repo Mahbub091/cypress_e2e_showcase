@@ -1,14 +1,14 @@
 /// <reference types="cypress" />
 
-import homepage from "../pages/homePage"
-import baseFunc from "../pages/functions"
-import loginPage from "../pages/loginPage"
-import signUpPage from "../pages/signUpPage"
-import utils from "../support/utils"
-import credUtils from "../support/credentialUtils"
+import homepage from "../../pages/homePage"
+import baseFunc from "../../pages/functions"
+import loginPage from "../../pages/loginPage"
+import signUpPage from "../../pages/signUpPage"
+import utils from "../../support/utils"
+import credUtils from "../../support/credentialUtils"
 
-describe("Test Case 4: Logout User", () => {
-	it("Navigating to the URL", () => {
+describe("Login User With Right Credentials", () => {
+	it("Navigating to the website", () => {
 		cy.visit("/")
 	})
 
@@ -59,9 +59,5 @@ describe("Test Case 4: Logout User", () => {
 
 	it("Verify logged in as desired user", () => {
 		loginPage.loginUser().should("contain.text", " Logged in as robert")
-	})
-
-	it("Logging out", () => {
-		cy.contains(" Logout").click()
 	})
 })

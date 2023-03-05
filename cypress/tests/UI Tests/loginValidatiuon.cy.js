@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
-import homePage from "../pages/homePage"
-import loginPage from "../pages/loginPage"
-import credUtils from "../support/credentialUtils"
-import baseFunc from "../pages/functions"
+import homePage from "../../pages/homePage"
+import loginPage from "../../pages/loginPage"
+import credUtils from "../../support/credentialUtils"
+import baseFunc from "../../pages/functions"
 
 describe("Login Validation For Users", () => {
 	it("Navigating to HomePage", () => {

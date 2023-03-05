@@ -1,23 +1,23 @@
 /// <reference types="cypress" />
+//This test will create random user by using Faker data then will verify the random account.
 
-import homepage from "../pages/homePage"
-import baseFunc from "../pages/functions"
-import loginPage from "../pages/loginPage"
-import signUpPage from "../pages/signUpPage"
-import utils from "../support/utils"
-import credUtils from "../support/credentialUtils"
-import test from "../support/testUtils"
+import homepage from "../../pages/homePage"
+import baseFunc from "../../pages/functions"
+import loginPage from "../../pages/loginPage"
+import signUpPage from "../../pages/signUpPage"
+import utils from "../../support/utils"
+import credUtils from "../../support/credentialUtils"
+import { faker } from "@faker-js/faker"
+import test from "../../support/testUtils"
 
-describe("Register User on page", () => {
-	it("Navigating to the website", () => {
+describe("Random User Verification", () => {
+	it("Navigating To The Webpage", () => {
 		cy.visit("/")
 	})
-
-	it("Homepage navigation verification", () => {
+	it("Homepage Navigation Verification", () => {
 		cy.validUrl("exercise", credUtils.homePage)
 		baseFunc.ValidatePageTitle("Automation Exercise")
 	})
-
 	it("Click On Signup/Login Button", () => {
 		homepage
 			.signInButton()
@@ -28,25 +28,25 @@ describe("Register User on page", () => {
 			.realHover()
 			.realClick()
 	})
-
 	it("New User SignUp is visible", () => {
 		cy.contains("New User Signup!")
 			.should("be.visible")
 			.should("have.text", "New User Signup!")
 	})
-
 	it("Enter name and email address", () => {
+		const randomAccountName = faker.name.fullName()
+		const randomEmail = faker.name.firstName() + "@mail.com"
 		loginPage
 			.signUpName()
 			.should("be.visible")
 			.should("have.attr", "placeholder", "Name")
-			.type(utils.randomAccountName)
+			.type(randomAccountName)
 
 		loginPage
 			.signUpPassword()
 			.should("be.visible")
 			.should("have.attr", "placeholder", "Email Address")
-			.type(utils.randomEmail)
+			.type(randomEmail)
 	})
 
 	it("Click Signup button", () => {
@@ -116,34 +116,47 @@ describe("Register User on page", () => {
 			})
 	})
 
-	it("Validating checkbox", () => {
+	it("Validating Checkbox", () => {
 		signUpPage.newsLetterCheckbox().check().should("be.checked")
 		signUpPage.specialOffersCheckbox().check().should("be.checked")
 	})
 
 	it("Address Info Field", () => {
-		signUpPage.firstNameField().type(utils.firstName)
+		const firstName = faker.name.firstName()
+		const lastName = faker.name.lastName()
+		const companyName = faker.company.name()
+		const addressOne = faker.address.buildingNumber()
+		const address2 = faker.address.streetAddress()
+		const country = faker.address.country()
+		const state = faker.address.state()
+		const city = faker.address.cityName()
+		const zipCode = faker.address.zipCode()
+		const mobileNo = faker.phone.number()
 
-		signUpPage.lastNameField().type(utils.lastName)
+		signUpPage.firstNameField().type(firstName)
 
-		signUpPage.companyField().type(utils.companyName)
+		signUpPage.lastNameField().type(lastName)
 
-		signUpPage.addressField().type(utils.address)
+		signUpPage.companyField().type(companyName)
 
-		signUpPage.address2Field().type(utils.address2)
+		signUpPage.addressField().type(addressOne)
+
+		signUpPage.address2Field().type(address2)
 
 		signUpPage.countryField().select(utils.country)
 
-		signUpPage.stateField().type(utils.state)
+		signUpPage.stateField().type(state)
 
-		signUpPage.cityField().type(utils.city)
+		signUpPage.cityField().type(city)
 
-		signUpPage.zipCodeField().type(utils.zipCode)
+		signUpPage.zipCodeField().type(zipCode)
 
-		signUpPage.mobileNoField().type(utils.mobileNo)
+		signUpPage.mobileNoField().type(mobileNo)
 	})
 
-	it("Click create account button", () => {
+	it("Click Create Account Button", function () {
+		cy.randomUserStore()
+
 		signUpPage
 			.createAccountButton()
 			.should("be.visible")
@@ -155,10 +168,13 @@ describe("Register User on page", () => {
 		signUpPage.continueButtonClick()
 	})
 
-	it("Username validation & delete", () => {
-		loginPage.loginUserContainText()
+	it("Verifying User Creation and Login", function () {
+		test.runnerLog(this.randomUserName)
 
+		homepage.loginUser().contains(this.randomUserName)
 		test.eleByContains("Delete Account").should("be.visible").realClick()
 		test.eleByContains("Continue").should("be.visible").realClick()
+
+		homepage.loginUser().should("not.exist")
 	})
 })
