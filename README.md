@@ -1,12 +1,11 @@
 # cypress_e2e_framework
 
+<div align="center">
+        
 [![Cypress Test](https://github.com/Mahbub091/cypress_e2e_showcase/actions/workflows/main.yml/badge.svg)](https://github.com/Mahbub091/cypress_e2e_showcase/actions/workflows/main.yml)
-
-<p align="center">
-        <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
-    <a href="[https://circleci.com/gh/badges/shields/tree/master](https://img.shields.io/github/commit-activity/w/mahbub091/cypress_e2e_showcase/master?style=plastic)">
-</p>
-
+<img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
+<a href="[https://circleci.com/gh/badges/shields/tree/master](https://img.shields.io/github/commit-activity/w/mahbub091/cypress_e2e_showcase/master?style=plastic)">
+</div>
 
 
 This project has several reporting implemented:
