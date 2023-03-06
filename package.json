@@ -4,22 +4,27 @@
 	"description": "Cypress End-To-End Testing (JS)",
 	"main": "index.js",
 	"scripts": {
-		"cy:headless": "cypress run --browser chrome --headless",
-		"open:cy": "cypress open",
-		"report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/finalReport.json",
-		"report:generate": "marge cypress/reports/finalReport.json --reportDir ./ --inline",
-		"mochaReport": "npm run report-merge && npm run mochawesome_generate_report",
-		"allure:run": "cypress run --browser chrome --env allure=true",
-		"allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
-		"allure:test": "npm run allure:run && npm run allure:report",
-		"cloud:cy": "npx cypress run --record --key {input cloud Key}"
+		"cy:open": "npx cypress open",
+		"cy:test": "npm run scripts || npm run posttest",
+		"clean:reports": "if exist cypress\\reports rmdir /s/q cypress\\reports && mkdir cypress\\reports\\mochareports",
+		"pretest": "npm run clean:reports",
+		"scripts": "cypress run --browser chrome --headless",
+		"combine-reports": "mochawesome-merge cypress/reports/**/*.json>cypress/reports/mochareports/report.json",
+		"generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports -- inline",
+		"posttest": "npm run combine-reports && npm run generate-report"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Mahbub091/cypress_e2e_showcase.git"
 	},
 	"keywords": [
-		"cypress"
+		"cypress",
+		"javascript framework",
+		"End to End testing",
+		"component testing",
+		"mochawesome",
+		"chai",
+		"jasmine"
 	],
 	"author": "Mahbub091",
 	"license": "ISC",
@@ -29,19 +34,19 @@
 	"devDependencies": {
 		"@cypress/xpath": "^2.0.3",
 		"@faker-js/faker": "^7.6.0",
-		"@shelex/cypress-allure-plugin": "^2.34.0",
 		"cypress": "^11.2.0",
 		"cypress-if": "^1.10.2",
 		"cypress-mochawesome-reporter": "^3.2.2",
-		"cypress-multi-reporters": "^1.5.0",
+		"cypress-multi-reporters": "^1.6.2",
 		"cypress-plugin-store": "^1.3.2",
 		"eslint-plugin-cypress": "^2.12.1",
-		"mochawesome": "^7.0.1",
-		"mochawesome-merge": "^4.2.1",
-		"mochawesome-report-generator": "^6.0.1",
+		"mochawesome": "^7.1.3",
+		"mochawesome-merge": "^4.2.2",
+		"mochawesome-report-generator": "^6.2.0",
 		"prettier": "^2.7.1"
 	},
 	"dependencies": {
-		"cypress-real-events": "^1.7.4"
+		"cypress-real-events": "^1.7.4",
+		"mocha": "^10.2.0"
 	}
 }
