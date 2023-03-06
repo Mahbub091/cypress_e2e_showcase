@@ -13,6 +13,7 @@ module.exports = defineConfig({
 	viewportHeight: 1200,
 	viewportWidth: 1920,
 	screenshotOnRunFailure: true,
+	screenshotsFolder: "cypress/reports/screenshots",
 	trashAssetsBeforeRuns: true,
 	reporter: "cypress-mochawesome-reporter",
 	reporterOptions: {
@@ -29,8 +30,5 @@ module.exports = defineConfig({
 		setupNodeEvents(on, config) {
 			return require("./cypress/plugins/index.js")(on, config)
 		},
-	},
-	env: {
-		allureResultsPath: "allure-results",
 	},
 })
