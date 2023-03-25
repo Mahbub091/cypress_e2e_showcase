@@ -13,11 +13,11 @@ module.exports = defineConfig({
 	viewportHeight: 1200,
 	viewportWidth: 1920,
 	screenshotOnRunFailure: true,
-	screenshotsFolder: "cypress/reports/screenshots",
+	screenshotsFolder: "reports/screenshots",
 	trashAssetsBeforeRuns: true,
 	reporter: "cypress-mochawesome-reporter",
 	reporterOptions: {
-		reportDir: "cypress/reports/html",
+		reportDir: "reports/html",
 		charts: true,
 		reportPageTitle: "End-To-End Test Suite",
 		embeddedScreenshots: true,
