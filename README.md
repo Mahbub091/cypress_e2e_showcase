@@ -14,16 +14,3 @@
 [![GitHub commits](https://badgen.net/github/commits/Mahbub091/cypress_e2e_showcase)](https://GitHub.com/Mahbub091/cypress_e2e_showcase/commit/)
 [![GitHub license](https://badgen.net/github/license/Mahbub091/cypress_e2e_showcase)](https://github.com/Mahbub091/cypress_e2e_showcase/blob/master/LICENSE)
 </div>
-
-This project has several reporting implemented:
-
-1. HTML Reporter
-2. Mochawesome Reporter
-3. Allure Reporter
-
-For Headless Run Please execute "npm run cy:headless" from your terminal.
-Run "open:cy" to open Cypress Runner GUI Mode.
-Run "npm run mochaReport" for Mochawesome Reporter.
-Run "allure:run" for Allure Report Generation.
-Run "allure:open" to open your latest Allure Report.
-Run "cloud:cy" to create your cloud based reporting.
