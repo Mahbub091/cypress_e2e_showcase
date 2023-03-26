@@ -9,30 +9,12 @@ on:
     branches: ["master"]
 
 jobs:
-  cypress-test:
-    name: Run on Chrome 107
-    runs-on: ubuntu-18.04
-    container: cypress/browsers:node18.12.0-chrome107
+  cypress-run:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-      - name: Run Cypress tests
-        run: npm run headless
-        continue-on-error: true
-
-      - name: Merge test reports
-        run: npm run combine-reports
-
-      - name: Generate HTML report
-        run: npm run generate-report
-
-      - name: Deploy report page to GitHub Page
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+      - name: Cypress.io
+        uses: cypress-io/github-action@v5.0.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
           browser: chrome
