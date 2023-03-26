@@ -1,8 +1,8 @@
-name: Generate Cypress Report
+name: Cypress CI/CD With Github Page Publish
 on:
   push:
     branches:
-      - 'mahbub'
+      - "mahbub"
 
 jobs:
   cypress-test:
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
