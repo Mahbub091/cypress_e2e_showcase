@@ -6,11 +6,11 @@ on:
     branches:
       - master
   pull_request:
-    branches: ['master']
+    branches: ["master"]
 
 jobs:
   cypress-test:
-    name: Run on Chrome 83
+    name: Run on Chrome 107
     runs-on: ubuntu-18.04
     container: cypress/browsers:node18.12.0-chrome107
     steps:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Generate HTML report
         run: npm run generate-report
-      
+
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
