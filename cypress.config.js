@@ -13,7 +13,7 @@ module.exports = defineConfig({
 	viewportHeight: 1200,
 	viewportWidth: 1920,
 	screenshotOnRunFailure: false,
-	screenshotsFolder: "cypress/assets/screenshots",
+	screenshotsFolder: "cypress/screenshots",
 	trashAssetsBeforeRuns: true,
 	reporter: "cypress-mochawesome-reporter",
 	reporterOptions: {
