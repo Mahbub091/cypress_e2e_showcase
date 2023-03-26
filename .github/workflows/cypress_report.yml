@@ -7,7 +7,7 @@ on:
 jobs:
   cypress-test:
     name: Run on Chrome 107
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container: cypress/browsers:node16.16.0-chrome107-ff107
 
     strategy:
@@ -16,26 +16,26 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.7.0
 
       - name: Install cypress and verify
         run: |
           npm ci
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run test:chrome
+        run: npm run scripts
         continue-on-error: true
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r public/videos
-          cp -r public/screenshots
+      # - name: Copy test execution videos and screenshots
+      #   run: |
+      #     mkdir public
+      #     cp -r public/videos
+      #     cp -r public/screenshots
       - name: Merge test reports
-        run: npm run combine:report
+        run: npm run combine-reports
 
       - name: Generate HTML report
-        run: npm run generate:report
+        run: npm run generate-report
 
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
