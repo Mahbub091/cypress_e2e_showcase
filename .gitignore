@@ -139,6 +139,4 @@ dist
 .svelte-kit
 
 cypress/downloads
-cypress/videos
-cypress/screenshots
 reports
