@@ -24,11 +24,6 @@ jobs:
         run: npm run scripts
         continue-on-error: true
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir
-          cp -r cypress/videos
-          cp -r cypress/screenshots
       - name: Merge test reports
         run: npm run combine-report
 
