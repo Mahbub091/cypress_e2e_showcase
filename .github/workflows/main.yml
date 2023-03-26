@@ -21,11 +21,11 @@ jobs:
           npm ci
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run scripts
+        run: npm run headless
         continue-on-error: true
 
       - name: Merge test reports
-        run: npm run combine-report
+        run: npm run combine-reports
 
       - name: Generate HTML report
         run: npm run generate-report

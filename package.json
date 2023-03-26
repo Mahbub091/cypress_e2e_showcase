@@ -11,7 +11,8 @@
 		"scripts": "cypress run --browser chrome --headless",
 		"combine-reports": "mochawesome-merge cypress/reports/**/*.json>cypress/reports/mochareports/report.json",
 		"generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports -- inline",
-		"posttest": "npm run combine-reports && npm run generate-report"
+		"posttest": "npm run combine-reports && npm run generate-report",
+		"headless": "cypress run"
 	},
 	"repository": {
 		"type": "git",
