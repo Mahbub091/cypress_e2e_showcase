@@ -16,13 +16,13 @@ jobs:
         with:
           command: npm run cy:test
 
-      - name: Uploading artifact
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: cypress-execution-report
-          path: cypress/reports
-          retention-days: 30
+      # - name: Uploading artifact
+      #   uses: actions/upload-artifact@v2
+      #   if: always()
+      #   with:
+      #     name: cypress-execution-report
+      #     path: cypress/reports
+      #     retention-days: 30
 
       # - name: Copy test execution videos and screenshots
       #   run: |
