@@ -26,4 +26,4 @@
 -                   💠 npm run cy:test (Will execute the test suite on headless mode while executing the PRETEST & POST-TEST Conditions)
 -                   💠 npm run cy:open (Will open the Cypress GUI Runner)
 
-- You can check the execution reports under `cypress/reports` folder..
+- You can check the execution reports under `cypress/reports` folder....
