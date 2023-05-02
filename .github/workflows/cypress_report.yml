@@ -5,36 +5,35 @@ on:
       - "mahbub"
 
 jobs:
-  cypress-test:
-    name: Run on Chrome 107
+  cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.16.0-chrome107-ff107
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - uses: actions/checkout@v2.7.0
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
-      - name: Run Cypress tests
-        run: npm run scripts
-        continue-on-error: true
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
+        with:
+          command: npm run cy:headless
+
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: reports
+          retention-days: 30
 
       # - name: Copy test execution videos and screenshots
       #   run: |
       #     mkdir public
       #     cp -r public/videos
       #     cp -r public/screenshots
-      - name: Merge test reports
-        run: npm run combine-reports
+      # - name: Merge test reports
+      #   run: npm run combine-reports
 
-      - name: Generate HTML report
-        run: npm run generate-report
+      # - name: Generate HTML report
+      #   run: npm run generate-report
 
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
