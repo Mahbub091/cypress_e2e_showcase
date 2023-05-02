@@ -14,14 +14,14 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          command: npm run scripts
+          command: npm run cy:test
 
       - name: Uploading artifact
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: cypress-execution-report
-          path: reports
+          path: cypress/reports
           retention-days: 30
 
       # - name: Copy test execution videos and screenshots
