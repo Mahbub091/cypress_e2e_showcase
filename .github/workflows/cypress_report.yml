@@ -2,7 +2,7 @@ name: Cypress CI/CD With Github Page Publish
 on:
   push:
     branches:
-      - "mahbub"
+      - "master"
 
 jobs:
   cypress-run:
@@ -31,5 +31,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: master
-          publish_dir: ./cypress/reports
+          publish_branch: gh-pages
