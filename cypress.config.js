@@ -23,6 +23,10 @@ module.exports = defineConfig({
 		reportPageTitle: "End-To-End Test Suite",
 		embeddedScreenshots: true,
 		inlineAssets: true,
+		quiet: true,
+		overwrite: false,
+		html: false,
+		json: true,
 	},
 	e2e: {
 		baseUrl: "https://www.automationexercise.com/",
