@@ -12,7 +12,7 @@ import test from "../../support/testUtils"
 
 describe("Random User Verification", () => {
 	it("Navigating To The Webpage", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 	it("Homepage Navigation Verification", () => {
 		cy.validUrl("exercise", credUtils.homePage)

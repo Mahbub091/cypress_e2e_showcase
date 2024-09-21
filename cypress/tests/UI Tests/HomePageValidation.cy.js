@@ -7,7 +7,7 @@ import credUtils from "../../support/credentialUtils"
 
 describe("HomePage Testing", () => {
 	it("Navigate and Validate Home Page", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 
 	it("Homepage navigation verification", () => {

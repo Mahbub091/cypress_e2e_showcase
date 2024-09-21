@@ -1,6 +1,6 @@
 const credUtils = {
-	homePage: "https://www.automationexercise.com/",
-	loginPage: "https://www.automationexercise.com/login",
+	homePage: "https://automationexercise.com/",
+	loginPage: "https://automationexercise.com/login",
 	email: "test2567867@email.com",
 	pass: "random123",
 	name: "Robert",

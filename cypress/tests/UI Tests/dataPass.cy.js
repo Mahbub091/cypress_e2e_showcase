@@ -5,7 +5,7 @@ describe('E-commerce Site Login Test', () => {
 
     // Run this before each test to visit the website
     beforeEach(() => {
-        cy.visit(Cypress.env('TEST'));
+        cy.visit(Cypress.env('LAMBDATEST'));
     });
 
     it('Logs in using valid credentials', () => {
