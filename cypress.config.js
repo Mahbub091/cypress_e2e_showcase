@@ -1,6 +1,8 @@
 const { defineConfig } = require("cypress")
+const dotenv = require('dotenv').config();
 
 module.exports = defineConfig({
+	env: {...process.env},
 	projectId: "ppvyor",
 	chromeWebSecurity: false,
 	defaultCommandTimeout: 30000,
@@ -25,7 +27,6 @@ module.exports = defineConfig({
 		inlineAssets: true,
 	},
 	e2e: {
-		baseUrl: "https://www.automationexercise.com/",
 		experimentalRunAllSpecs: true,
 		specPattern: "cypress/tests/**/*.cy.{js,jsx,ts,tsx}",
 		setupNodeEvents(on, config) {
