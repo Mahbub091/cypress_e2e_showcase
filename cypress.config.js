@@ -15,8 +15,8 @@ module.exports = defineConfig({
 	viewportHeight: 1200,
 	viewportWidth: 1920,
 	screenshotOnRunFailure: false,
-	screenshotsFolder: "cypress/reports/screenshots",
-	videosFolder: "cypress/reports/videos",
+	screenshotsFolder: "cypress/screenshots",
+	videosFolder: "cypress/videos",
 	trashAssetsBeforeRuns: true,
 	reporter: "cypress-mochawesome-reporter",
 	reporterOptions: {
@@ -25,6 +25,10 @@ module.exports = defineConfig({
 		reportPageTitle: "End-To-End Test Suite",
 		embeddedScreenshots: true,
 		inlineAssets: true,
+		quiet: true,
+		overwrite: false,
+		html: false,
+		json: true,
 	},
 	e2e: {
 		experimentalRunAllSpecs: true,

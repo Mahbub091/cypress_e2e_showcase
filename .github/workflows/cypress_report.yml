@@ -1,34 +1,37 @@
-name: Cypress CI/CD With Github Page Publish
-on:
-  push:
-    branches:
-      - "master"
+name: Generate Cypress Report
+on: [push]
 
 jobs:
-  cypress-run:
+  cypress-test:
+    name: Run Tests on Chrome Browser
     runs-on: ubuntu-latest
+    container: cypress/browsers:node18.12.0-chrome107
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v4
-        with:
-          command: npm run cy:test
+      - name: Install cypress and verify
+        run: |
+          npm ci
+          $(npm bin)/cypress verify
 
-      # - name: Copy test execution videos and screenshots
-      #   run: |
-      #     mkdir public
-      #     cp -r public/videos
-      #     cp -r public/screenshots
-      # - name: Merge test reports
-      #   run: npm run combine-reports
+      - name: Run Cypress tests
+        run: npm run cy:test
+        continue-on-error: true
 
-      # - name: Generate HTML report
-      #   run: npm run generate-report
+      - name: Copy test execution videos and screenshots
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+          cp -r cypress/screenshots public/screenshots
+
+      - name: Merge test reports
+        run: npm run combine-reports
+
+      - name: Generate HTML report
+        run: npm run generate-report
 
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
+          publish_dir: ./public
