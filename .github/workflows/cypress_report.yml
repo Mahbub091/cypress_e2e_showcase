@@ -1,37 +1,63 @@
-name: Generate Cypress Report
-on: [push]
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-  cypress-test:
-    name: Run Tests on Chrome Browser
+  cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node18.12.0-chrome107
-    steps:
-      - uses: actions/checkout@v2
 
-      - name: Install cypress and verify
-        run: |
-          npm ci
-          $(npm bin)/cypress verify
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Run Cypress tests
-        run: npm run cy:test
-        continue-on-error: true
+        run: npm run scripts
+        env:
+          CI: true
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-
-      - name: Merge test reports
+      - name: Merge Test Reports
         run: npm run combine-reports
 
-      - name: Generate HTML report
+      - name: Generate HTML Report
         run: npm run generate-report
 
-      - name: Deploy report page to GitHub Page
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload Cypress Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload Cypress Videos
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: cypress/videos
+
+      - name: Upload Cypress Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-report
+          path: cypress/reports
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-html-report
+          path: cypress/reports/mochawesome.html
