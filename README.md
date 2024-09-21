@@ -27,3 +27,6 @@
 -                   💠 npm run cy:open (Will open the Cypress GUI Runner)
 
 - You can check the execution reports under `cypress/reports` folder....
+
+Packages used:
+--> env

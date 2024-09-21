@@ -46,7 +46,9 @@
 		"prettier": "^2.7.1"
 	},
 	"dependencies": {
+		"cypress_e2e_showcase": "file:",
 		"cypress-real-events": "^1.7.4",
+		"dotenv": "^16.4.5",
 		"mocha": "^10.2.0"
 	}
 }
