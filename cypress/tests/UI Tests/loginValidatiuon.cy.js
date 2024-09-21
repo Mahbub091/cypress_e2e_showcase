@@ -7,7 +7,7 @@ import baseFunc from "../../pages/functions"
 
 describe("Login Validation For Users", () => {
 	it("Navigating to HomePage", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 
 	it("Homepage navigation verification", () => {

@@ -6,7 +6,7 @@ import credUtils from "../../support/credentialUtils"
 
 describe("Incorrect Login Validation", () => {
 	it("Navigating to the website", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 
 	it("Homepage navigation verification", () => {

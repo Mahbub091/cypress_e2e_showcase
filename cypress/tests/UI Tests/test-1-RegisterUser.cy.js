@@ -10,7 +10,7 @@ import test from "../../support/testUtils"
 
 describe("Register User on page", () => {
 	it("Navigating to the website", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 
 	it("Homepage navigation verification", () => {

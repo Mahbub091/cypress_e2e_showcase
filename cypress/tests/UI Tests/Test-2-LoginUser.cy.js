@@ -9,7 +9,7 @@ import credUtils from "../../support/credentialUtils"
 
 describe("Login User With Right Credentials", () => {
 	it("Navigating to the website", () => {
-		cy.visit("/")
+		cy.visit(Cypress.env('AUTOMATIONEXERCISE'))
 	})
 
 	it("Homepage navigation verification", () => {
