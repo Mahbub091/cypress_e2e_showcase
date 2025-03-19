@@ -2,5 +2,6 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": false,
-	"cSpell.words": ["INVALIDUSER", "ppvyor"]
+	"cSpell.words": ["INVALIDUSER", "ppvyor"],
+	"postman.settings.dotenv-detection-notification-visibility": false
 }
